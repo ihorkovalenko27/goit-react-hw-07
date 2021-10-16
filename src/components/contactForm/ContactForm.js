@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getItems } from '../../redux/phonebook/phonebook-selectors';
-import shortid from 'shortid';
 import s from './ContactForm.module.css';
 import { addContacts } from '../../redux/phonebook/phonebook-operations';
 
 function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const id = shortid.generate();
   const contacts = useSelector(getItems);
   const dispatch = useDispatch();
-  const onSubmit = (id, name, number) => dispatch(addContacts(id, name, number));
+  const onSubmit = (name, number) => dispatch(addContacts(name, number));
 
   const handleInputChange = event => {
     const { name, value } = event.currentTarget;
@@ -39,7 +37,7 @@ function ContactForm() {
       reset();
       return;
     }
-    onSubmit(id, name, number);
+    onSubmit(name, number);
     reset();
   };
 

@@ -12,10 +12,10 @@ export const fetchContacts = () => async dispatch => {
   }
 };
 
-export const addContacts = (id, name, number) => async dispatch => {
+export const addContacts = (name, number) => async dispatch => {
   dispatch(contactsActions.addContactsRequest());
   try {
-    const newContact = await contactsAPI.addContact(id, name, number);
+    const newContact = await contactsAPI.addContact(name, number);
     dispatch(contactsActions.addContactsSuccess(newContact));
   } catch (error) {
     dispatch(contactsActions.addContactsError(error));
