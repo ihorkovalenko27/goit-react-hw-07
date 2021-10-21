@@ -38,6 +38,10 @@ const filter = createReducer('', {
 const error = createReducer(null, {
   [fetchContactsError]: (_, action) => action.payload,
   [fetchContactsRequest]: () => null,
+  [addContactsError]: (_, action) => action.payload,
+  [addContactsRequest]: () => null,
+  [deleteContactsError]: (_, action) => action.payload,
+  [deleteContactsRequest]: () => null,
 });
 
 export default combineReducers({
